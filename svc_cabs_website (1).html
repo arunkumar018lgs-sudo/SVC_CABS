@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVC CABS - Reliable Taxi, Cab & Tour Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#0F172A',
+                            yellow: '#F59E0B',
+                            yellowHover: '#D97706',
+                            lightBg: '#F8FAFC',
+                            cardBg: '#FFFFFF',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.90) 0%, rgba(15, 23, 42, 0.75) 100%), 
+                        url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="font-sans bg-brand-lightBg text-slate-800 antialiased selection:bg-brand-yellow selection:text-brand-blue">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200/80 shadow-sm transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 bg-brand-yellow rounded-xl flex items-center justify-center text-brand-blue font-extrabold text-2xl shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid font-black">SVC</i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-tight text-slate-900 block leading-none">SVC <span class="text-brand-yellow">CABS</span></span>
+                        <span class="text-[10px] font-semibold text-slate-500 tracking-wider uppercase">Tours & Travels</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center gap-7 font-semibold text-slate-700 text-sm">
+                    <a href="#booking" class="hover:text-brand-yellow transition-colors">Book Now</a>
+                    <a href="#services" class="hover:text-brand-yellow transition-colors">Services</a>
+                    <a href="#fleet" class="hover:text-brand-yellow transition-colors">Our Fleet</a>
+                    <a href="#why-us" class="hover:text-brand-yellow transition-colors">Why Choose Us</a>
+                    <a href="#contact" class="hover:text-brand-yellow transition-colors">Contact</a>
+                </nav>
+
+                <!-- Phone Numbers & WhatsApp Trigger -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <div class="flex flex-col text-right pr-2 border-r border-slate-200">
+                        <a href="tel:+918861313267" class="text-xs font-bold text-slate-800 hover:text-brand-yellow transition-colors flex items-center gap-1 justify-end">
+                            <i class="fa-solid fa-phone text-brand-yellow text-[10px]"></i> +91 8861313267
+                        </a>
+                        <a href="tel:+919743123884" class="text-xs font-bold text-slate-800 hover:text-brand-yellow transition-colors flex items-center gap-1 justify-end">
+                            <i class="fa-solid fa-phone text-brand-yellow text-[10px]"></i> +91 9743123884
+                        </a>
+                    </div>
+                    
+                    <a href="https://wa.me/918861313267?text=Hi%20SVC%20CABS,%20I%20want%20to%20inquire%20about%20a%20cab%20booking." target="_blank" class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition-all shadow-md text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="menuBtn" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 focus:outline-none" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl">
+            <a href="#booking" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-yellow">Book Cab</a>
+            <a href="#services" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-yellow">Services</a>
+            <a href="#fleet" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-yellow">Fleet Details</a>
+            <a href="#why-us" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-yellow">Why Us</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-yellow">Contact</a>
+            
+            <div class="pt-2 flex flex-col gap-2">
+                <div class="grid grid-cols-2 gap-2">
+                    <a href="tel:+918861313267" class="flex items-center justify-center gap-1 py-2.5 rounded-xl border border-slate-300 font-bold text-xs text-slate-800">
+                        <i class="fa-solid fa-phone text-brand-yellow"></i> 8861313267
+                    </a>
+                    <a href="tel:+919743123884" class="flex items-center justify-center gap-1 py-2.5 rounded-xl border border-slate-300 font-bold text-xs text-slate-800">
+                        <i class="fa-solid fa-phone text-brand-yellow"></i> 9743123884
+                    </a>
+                </div>
+                <a href="https://wa.me/918861313267?text=Hi%20SVC%20CABS,%20I%20want%20to%20inquire%20about%20a%20cab%20booking." target="_blank" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 text-white font-bold">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Chat on WhatsApp (8861313267)</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Booking Form -->
+    <section class="hero-bg min-h-[90vh] py-12 lg:py-16 text-white flex items-center relative" id="booking">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-yellow/20 text-brand-yellow border border-brand-yellow/30 font-medium text-sm">
+                        <i class="fa-solid fa-shield-halved"></i> 100% Safe, Hygienic & Verified Drivers
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none">
+                        Reliable Rides, <span class="text-brand-yellow">Every Distance.</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg font-normal max-w-xl mx-auto lg:mx-0">
+                        Top-rated cab service for local city rides, outstation round trips, airport transfers, and customizable holiday tour packages.
+                    </p>
+
+                    <!-- Contact Bar Quick Links -->
+                    <div class="pt-2 flex flex-wrap gap-3 justify-center lg:justify-start text-xs font-semibold">
+                        <a href="mailto:arunkumar007lgs@gmail.com" class="px-3 py-1.5 bg-slate-800/80 hover:bg-slate-800 rounded-lg border border-slate-700 text-slate-300 flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-yellow"></i> arunkumar007lgs@gmail.com
+                        </a>
+                    </div>
+
+                    <!-- Feature Badges -->
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-700/60 max-w-lg mx-auto lg:mx-0 text-left">
+                        <div>
+                            <div class="text-2xl font-extrabold text-brand-yellow">24/7</div>
+                            <div class="text-xs text-slate-400 font-medium">Customer Support</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-brand-yellow">0 ₹</div>
+                            <div class="text-xs text-slate-400 font-medium">Hidden Charges</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-brand-yellow">4.9 ★</div>
+                            <div class="text-xs text-slate-400 font-medium">Customer Rating</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Booking Form Container -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 text-slate-800 shadow-2xl border border-slate-100 relative">
+                        <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-100">
+                            <div>
+                                <h2 class="text-2xl font-bold text-slate-900">Book Your Ride</h2>
+                                <p class="text-xs sm:text-sm text-slate-500">Fill details for instant quote & driver assignment</p>
+                            </div>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Instant Cab</span>
+                        </div>
+
+                        <!-- Form -->
+                        <form id="cabBookingForm" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                            <!-- Trip Type Tabs -->
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Select Trip Type</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="tripType" value="One Way" class="peer hidden" checked>
+                                        <div class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 text-center text-slate-600 peer-checked:bg-brand-blue peer-checked:text-white peer-checked:border-brand-blue transition-all">
+                                            One Way
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="tripType" value="Round Trip" class="peer hidden">
+                                        <div class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 text-center text-slate-600 peer-checked:bg-brand-blue peer-checked:text-white peer-checked:border-brand-blue transition-all">
+                                            Round Trip
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="tripType" value="Outstation" class="peer hidden">
+                                        <div class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 text-center text-slate-600 peer-checked:bg-brand-blue peer-checked:text-white peer-checked:border-brand-blue transition-all">
+                                            Outstation
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="tripType" value="Hourly Rental" class="peer hidden">
+                                        <div class="px-3 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-slate-200 text-center text-slate-600 peer-checked:bg-brand-blue peer-checked:text-white peer-checked:border-brand-blue transition-all">
+                                            Rental
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Pick Up & Drop Input Grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Pickup Location <span class="text-rose-500">*</span></label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-location-dot absolute left-3.5 top-3.5 text-slate-400"></i>
+                                        <input type="text" required id="pickup" placeholder="Enter Pickup Address or City" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-300 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 outline-none text-sm transition-all">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Drop Location <span class="text-rose-500">*</span></label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-location-arrow absolute left-3.5 top-3.5 text-slate-400"></i>
+                                        <input type="text" required id="drop" placeholder="Enter Drop Address or Destination" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-300 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 outline-none text-sm transition-all">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Date, Time & Car Preferred -->
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Date <span class="text-rose-500">*</span></label>
+                                    <input type="date" required id="pickupDate" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 outline-none text-sm transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Time <span class="text-rose-500">*</span></label>
+                                    <input type="time" required id="pickupTime" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 outline-none text-sm transition-all">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Preferred Vehicle</label>
+                                    <select id="carCategory" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 outline-none text-sm transition-all bg-white">
+                                        <option value="Any Vehicle">Any Car Available</option>
+                                        <option value="Hatchback (Swift/WagonR)">Hatchback (Swift/WagonR)</option>
+                                        <option value="Sedan (Dzire/Etios)">Sedan (Dzire/Etios)</option>
+                                        <option value="SUV (Innova/Ertiga)">SUV (Innova/Ertiga)</option>
+                                        <option value="Luxury / Premium SUV">Luxury / Premium SUV</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Contact Details -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Full Name <span class="text-rose-500">*</span></label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-400"></i>
+                                        <input type="text" required id="custName" placeholder="Your Full Name" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-300 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 outline-none text-sm transition-all">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Phone Number (WhatsApp) <span class="text-rose-500">*</span></label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-phone absolute left-3.5 top-3.5 text-slate-400"></i>
+                                        <input type="tel" required id="custPhone" placeholder="10-digit mobile number" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-300 focus:border-brand-yellow focus:ring-2 focus:ring-brand-yellow/30 outline-none text-sm transition-all">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-3">
+                                <button type="submit" class="w-full py-4 bg-brand-yellow hover:bg-brand-yellowHover text-brand-blue font-extrabold text-base rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-taxi"></i>
+                                    <span>CONFIRM & REQUEST CAB</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Offered Section -->
+    <section class="py-20 bg-white" id="services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Our Offerings</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Services Provided by SVC CABS</h2>
+                <p class="text-slate-600 mt-3 text-base">From quick city drops to memorable holiday excursions, we ensure top-notch travel comfort at competitive prices.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1 group">
+                    <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-brand-yellow text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-blue transition-colors">
+                        <i class="fa-solid fa-city"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Local Taxi & Airport</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Hassle-free point-to-point city commuting and guaranteed timely pickup/drop to Airport and Railway Stations.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2">
+                        <li><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> 24/7 Availability</li>
+                        <li><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> Zero Surge Pricing</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1 group">
+                    <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-brand-yellow text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-blue transition-colors">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Outstation Trips</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Comfortable inter-city road travel. Choose between budget-friendly One-Way drops or Multi-Day Round Trips.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2">
+                        <li><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> Clean & Sanitized Cabs</li>
+                        <li><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> Experienced Highway Drivers</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1 group">
+                    <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-brand-yellow text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-blue transition-colors">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Corporate Rentals</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Tailored cab management for companies, business meetings, executive travel, and event transportation.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2">
+                        <li><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> Monthly Billing Options</li>
+                        <li><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> Priority Dispatch</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-xl transition-all hover:-translate-y-1 group">
+                    <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center text-brand-yellow text-2xl mb-6 group-hover:bg-brand-yellow group-hover:text-brand-blue transition-colors">
+                        <i class="fa-solid fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Tours & Packages</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Customized tour packages for pilgrimage, hill stations, heritage tours, and family weekend getaways.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2">
+                        <li><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> Custom Itineraries</li>
+                        <li><i class="fa-solid fa-circle-check text-emerald-500 mr-1.5"></i> Local Sightseeing Experts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Fleet & Car Types Section -->
+    <section class="py-20 bg-slate-100" id="fleet">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Our Vehicles</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Explore Our Fleet Details</h2>
+                <p class="text-slate-600 mt-3 text-base">Select from well-maintained Hatchbacks, Sedans, and spacious SUVs suited for your budget & party size.</p>
+                
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8" id="fleetFilters">
+                    <button onclick="filterFleet('all')" class="fleet-btn px-5 py-2.5 rounded-full text-sm font-bold bg-brand-blue text-white shadow-md transition-all active-btn" data-category="all">
+                        All Fleet
+                    </button>
+                    <button onclick="filterFleet('hatchback')" class="fleet-btn px-5 py-2.5 rounded-full text-sm font-bold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all" data-category="hatchback">
+                        Hatchbacks
+                    </button>
+                    <button onclick="filterFleet('sedan')" class="fleet-btn px-5 py-2.5 rounded-full text-sm font-bold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all" data-category="sedan">
+                        Sedans
+                    </button>
+                    <button onclick="filterFleet('suv')" class="fleet-btn px-5 py-2.5 rounded-full text-sm font-bold bg-white text-slate-700 hover:bg-slate-200 shadow-sm transition-all" data-category="suv">
+                        SUVs & Luxury
+                    </button>
+                </div>
+            </div>
+
+            <!-- Fleet Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="fleetContainer">
+                
+                <!-- Fleet Card 1: Hatchback -->
+                <div class="fleet-card bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 hover:shadow-2xl transition-all duration-300" data-type="hatchback">
+                    <div class="relative h-52 bg-slate-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?q=80&w=800&auto=format&fit=crop" 
+                             alt="Maruti Swift Hatchback" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/0F172A/F59E0B?text=Compact+Hatchback'">
+                        <span class="absolute top-4 right-4 bg-brand-blue text-brand-yellow font-extrabold text-xs px-3 py-1.5 rounded-full shadow-md">
+                            Hatchback
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-bold text-slate-900">Swift / WagonR / Ritz</h3>
+                            <span class="text-brand-yellow font-extrabold text-lg">₹11 <span class="text-xs text-slate-500 font-normal">/km</span></span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">Ideal for economical city travel and small family trips.</p>
+                        
+                        <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-600 mb-6">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-users text-brand-yellow"></i> 4 Passengers</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-suitcase text-brand-yellow"></i> 2 Bags Capacity</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-snowflake text-brand-yellow"></i> Air Conditioned</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-gas-pump text-brand-yellow"></i> Petrol / CNG</div>
+                        </div>
+
+                        <button onclick="selectCarForBooking('Hatchback (Swift/WagonR)')" class="w-full py-3 bg-slate-900 hover:bg-brand-yellow hover:text-slate-900 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
+                            <span>Book Hatchback</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 2: Sedan -->
+                <div class="fleet-card bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 hover:shadow-2xl transition-all duration-300" data-type="sedan">
+                    <div class="relative h-52 bg-slate-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=800&auto=format&fit=crop" 
+                             alt="Swift Dzire Toyota Etios Sedan" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/0F172A/F59E0B?text=Sedan+Dzire+Etios'">
+                        <span class="absolute top-4 right-4 bg-brand-blue text-brand-yellow font-extrabold text-xs px-3 py-1.5 rounded-full shadow-md">
+                            Sedan
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-bold text-slate-900">Swift Dzire / Etios</h3>
+                            <span class="text-brand-yellow font-extrabold text-lg">₹13 <span class="text-xs text-slate-500 font-normal">/km</span></span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">Most popular choice for extra legroom, boot space & outstation travel.</p>
+                        
+                        <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-600 mb-6">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-users text-brand-yellow"></i> 4 Passengers</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-suitcase text-brand-yellow"></i> 3 Large Bags</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-snowflake text-brand-yellow"></i> Automatic/Manual AC</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-shield text-brand-yellow"></i> Dual Airbags</div>
+                        </div>
+
+                        <button onclick="selectCarForBooking('Sedan (Dzire/Etios)')" class="w-full py-3 bg-slate-900 hover:bg-brand-yellow hover:text-slate-900 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
+                            <span>Book Sedan</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Fleet Card 3: SUV -->
+                <div class="fleet-card bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-200/80 hover:shadow-2xl transition-all duration-300" data-type="suv">
+                    <div class="relative h-52 bg-slate-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=800&auto=format&fit=crop" 
+                             alt="Toyota Innova SUV" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                             onerror="this.src='https://placehold.co/600x400/0F172A/F59E0B?text=Innova+Ertiga+SUV'">
+                        <span class="absolute top-4 right-4 bg-brand-blue text-brand-yellow font-extrabold text-xs px-3 py-1.5 rounded-full shadow-md">
+                            SUV / MUV
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-bold text-slate-900">Innova Crysta / Ertiga</h3>
+                            <span class="text-brand-yellow font-extrabold text-lg">₹18 <span class="text-xs text-slate-500 font-normal">/km</span></span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">Spacious 6-7 seater vehicles perfect for family trips and group tours.</p>
+                        
+                        <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-600 mb-6">
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-users text-brand-yellow"></i> 6 - 7 Seats</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-suitcase text-brand-yellow"></i> 4+ Luggage Space</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-fan text-brand-yellow"></i> Rear AC Vents</div>
+                            <div class="flex items-center gap-2"><i class="fa-solid fa-couch text-brand-yellow"></i> Reclining Seats</div>
+                        </div>
+
+                        <button onclick="selectCarForBooking('SUV (Innova/Ertiga)')" class="w-full py-3 bg-slate-900 hover:bg-brand-yellow hover:text-slate-900 text-white font-bold rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
+                            <span>Book SUV</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose SVC CABS Section -->
+    <section class="py-20 bg-brand-blue text-white" id="why-us">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Why Choose Us</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">The SVC CABS Advantage</h2>
+                <p class="text-slate-400 mt-3 text-base">We prioritize safety, cleanliness, punctual pickups, and transparent billing for every single journey.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-slate-800/60 border border-slate-700/80 text-center">
+                    <div class="w-16 h-16 bg-brand-yellow/10 text-brand-yellow rounded-2xl flex items-center justify-center mx-auto text-3xl mb-5">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Verified Drivers</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Professional, courteous, background-verified drivers trained for long highway journeys and city routes.</p>
+                </div>
+
+                <div class="p-8 rounded-2xl bg-slate-800/60 border border-slate-700/80 text-center">
+                    <div class="w-16 h-16 bg-brand-yellow/10 text-brand-yellow rounded-2xl flex items-center justify-center mx-auto text-3xl mb-5">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Transparent Pricing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">No hidden charges or last-minute surprise fees. Exact tariff estimates provided before booking confirmation.</p>
+                </div>
+
+                <div class="p-8 rounded-2xl bg-slate-800/60 border border-slate-700/80 text-center">
+                    <div class="w-16 h-16 bg-brand-yellow/10 text-brand-yellow rounded-2xl flex items-center justify-center mx-auto text-3xl mb-5">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">24/7 Roadside Assistance</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Round-the-clock helpline & instant support for uninterrupted, safe travel experience everywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & FAQ Section -->
+    <section class="py-20 bg-slate-50 border-t border-slate-200" id="contact">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info Column -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-brand-yellow font-extrabold uppercase tracking-widest text-xs">Get In Touch</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900">Need Help or Booking Assistance?</h2>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Have custom requirements or need a special package rate? Call or WhatsApp us directly for quick quotes and instant driver assignment.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <!-- Phone Numbers Card -->
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200">
+                            <div class="w-12 h-12 bg-amber-100 text-brand-yellow rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-400">Call Us 24/7</div>
+                                <div class="flex flex-col gap-0.5 mt-0.5">
+                                    <a href="tel:+918861313267" class="text-base font-bold text-slate-900 hover:text-brand-yellow transition-colors">+91 8861313267</a>
+                                    <a href="tel:+919743123884" class="text-base font-bold text-slate-900 hover:text-brand-yellow transition-colors">+91 9743123884</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp Direct Card -->
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-400">WhatsApp Chat (8861313267)</div>
+                                <a href="https://wa.me/918861313267?text=Hi%20SVC%20CABS,%20I%20want%20to%20inquire%20about%20a%20cab%20booking." target="_blank" class="text-base font-bold text-slate-900 hover:text-emerald-600 transition-colors">Click to Chat on WhatsApp</a>
+                            </div>
+                        </div>
+
+                        <!-- Email Address Card -->
+                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-slate-200">
+                            <div class="w-12 h-12 bg-slate-100 text-slate-700 rounded-xl flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-400">Email Address</div>
+                                <a href="mailto:arunkumar007lgs@gmail.com" class="text-sm sm:text-base font-bold text-slate-900 hover:text-brand-yellow transition-colors break-all">arunkumar007lgs@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Accordion Column -->
+                <div class="lg:col-span-7 space-y-4">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h3>
+
+                    <div class="border border-slate-200 bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq(1)" class="w-full text-left p-5 font-bold text-slate-900 flex justify-between items-center">
+                            <span>How do I confirm my cab booking with SVC CABS?</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="faqIcon-1"></i>
+                        </button>
+                        <div id="faqAns-1" class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            You can fill out the interactive booking form on this website. Upon submitting, you can directly send your request via WhatsApp to +91 8861313267 or call us to lock in your cab details immediately.
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq(2)" class="w-full text-left p-5 font-bold text-slate-900 flex justify-between items-center">
+                            <span>Are tolls, state taxes, and parking included in the fare?</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="faqIcon-2"></i>
+                        </button>
+                        <div id="faqAns-2" class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            Toll charges, state entry taxes, and parking fees are charged as per actual receipts unless explicitly included in a custom all-inclusive tour package.
+                        </div>
+                    </div>
+
+                    <div class="border border-slate-200 bg-white rounded-2xl overflow-hidden shadow-sm">
+                        <button onclick="toggleFaq(3)" class="w-full text-left p-5 font-bold text-slate-900 flex justify-between items-center">
+                            <span>Can I cancel or reschedule my trip?</span>
+                            <i class="fa-solid fa-chevron-down text-slate-400 transition-transform" id="faqIcon-3"></i>
+                        </button>
+                        <div id="faqAns-3" class="hidden px-5 pb-5 text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            Yes, free cancellation or rescheduling is available when informed prior to vehicle dispatch. Contact us on WhatsApp (8861313267) or call us directly.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-brand-yellow rounded-lg flex items-center justify-center text-brand-blue font-black text-sm">
+                    SVC
+                </div>
+                <span class="text-lg font-bold text-white">SVC CABS</span>
+            </div>
+            <div class="text-xs text-slate-400 text-center">
+                Email: <a href="mailto:arunkumar007lgs@gmail.com" class="text-white hover:underline">arunkumar007lgs@gmail.com</a> | 
+                Phone: <a href="tel:+918861313267" class="text-white hover:underline">+91 8861313267</a>, <a href="tel:+919743123884" class="text-white hover:underline">+91 9743123884</a>
+            </div>
+            <p class="text-xs text-slate-500">© <span id="currentYear"></span> SVC CABS. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100 animate-in fade-in zoom-in duration-200">
+            
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-700 text-xl font-bold p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl mb-3">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900">Booking Details Ready!</h3>
+                <p class="text-xs text-slate-500 mt-1">Send your details directly to our WhatsApp booking desk (+91 8861313267)</p>
+            </div>
+
+            <!-- Booking Summary -->
+            <div class="bg-slate-50 rounded-2xl p-4 text-sm space-y-2.5 mb-6 border border-slate-200">
+                <div class="flex justify-between border-b border-slate-200 pb-2">
+                    <span class="text-slate-500">Customer Name:</span>
+                    <span class="font-bold text-slate-800" id="modalCustName">-</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-200 pb-2">
+                    <span class="text-slate-500">Phone:</span>
+                    <span class="font-bold text-slate-800" id="modalCustPhone">-</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-200 pb-2">
+                    <span class="text-slate-500">Trip Type:</span>
+                    <span class="font-bold text-slate-800" id="modalTripType">-</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-200 pb-2">
+                    <span class="text-slate-500">Pickup:</span>
+                    <span class="font-bold text-slate-800" id="modalPickup">-</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-200 pb-2">
+                    <span class="text-slate-500">Drop:</span>
+                    <span class="font-bold text-slate-800" id="modalDrop">-</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-200 pb-2">
+                    <span class="text-slate-500">Date & Time:</span>
+                    <span class="font-bold text-slate-800" id="modalDateTime">-</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Selected Car:</span>
+                    <span class="font-bold text-brand-yellow bg-slate-900 px-2 py-0.5 rounded text-xs" id="modalCarCategory">-</span>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="space-y-3">
+                <button id="whatsappSubmitBtn" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-md transition-all">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Send Request to WhatsApp (8861313267)</span>
+                </button>
+                <button onclick="closeModal()" class="w-full py-3 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-xl transition-all">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Default today's date in pickup field
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('pickupDate').value = today;
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Fleet Category Filter Function
+        function filterFleet(category) {
+            const buttons = document.querySelectorAll('.fleet-btn');
+            const cards = document.querySelectorAll('.fleet-card');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.remove('bg-white', 'text-slate-700');
+                    btn.classList.add('bg-brand-blue', 'text-white');
+                } else {
+                    btn.classList.remove('bg-brand-blue', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-700');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-type') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Quick select car from fleet card button
+        function selectCarForBooking(carType) {
+            const selectElement = document.getElementById('carCategory');
+            selectElement.value = carType;
+            
+            // Smooth scroll to booking section
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Global store for current submission
+        let currentBookingData = null;
+
+        // Handle Booking Form Submit
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+
+            const tripTypeRadio = document.querySelector('input[name="tripType"]:checked');
+            const tripType = tripTypeRadio ? tripTypeRadio.value : 'One Way';
+            const pickup = document.getElementById('pickup').value;
+            const drop = document.getElementById('drop').value;
+            const pickupDate = document.getElementById('pickupDate').value;
+            const pickupTime = document.getElementById('pickupTime').value;
+            const carCategory = document.getElementById('carCategory').value;
+            const custName = document.getElementById('custName').value;
+            const custPhone = document.getElementById('custPhone').value;
+
+            currentBookingData = {
+                tripType,
+                pickup,
+                drop,
+                pickupDate,
+                pickupTime,
+                carCategory,
+                custName,
+                custPhone
+            };
+
+            // Fill modal details
+            document.getElementById('modalCustName').textContent = custName;
+            document.getElementById('modalCustPhone').textContent = custPhone;
+            document.getElementById('modalTripType').textContent = tripType;
+            document.getElementById('modalPickup').textContent = pickup;
+            document.getElementById('modalDrop').textContent = drop;
+            document.getElementById('modalDateTime').textContent = `${pickupDate} at ${pickupTime}`;
+            document.getElementById('modalCarCategory').textContent = carCategory;
+
+            // Setup WhatsApp button URL targeting +91 8861313267
+            const message = `*NEW CAB BOOKING REQUEST - SVC CABS*%0A%0A` +
+                `*Name:* ${encodeURIComponent(custName)}%0A` +
+                `*Phone:* ${encodeURIComponent(custPhone)}%0A` +
+                `*Trip Type:* ${encodeURIComponent(tripType)}%0A` +
+                `*Pickup Location:* ${encodeURIComponent(pickup)}%0A` +
+                `*Drop Location:* ${encodeURIComponent(drop)}%0A` +
+                `*Date & Time:* ${encodeURIComponent(pickupDate)} ${encodeURIComponent(pickupTime)}%0A` +
+                `*Car Preference:* ${encodeURIComponent(carCategory)}`;
+
+            const waBtn = document.getElementById('whatsappSubmitBtn');
+            waBtn.onclick = function() {
+                window.open(`https://wa.me/918861313267?text=${message}`, '_blank');
+            };
+
+            // Display modal
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        // Close Modal Function
+        function closeModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        // FAQ Toggle Function
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faqAns-${id}`);
+            const icon = document.getElementById(`faqIcon-${id}`);
+
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
